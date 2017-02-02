@@ -67,7 +67,7 @@ app.get("/cart", (req,res) => {
 app.post("/cart/add", (req,res) => {
   // console.log(req.body.name);
   console.log(req.body.item_quantity);
-console.log(req.body.item_price);
+  console.log(req.body.item_price);
 
 
 addItemToCart();

@@ -3,7 +3,7 @@
 
   <head>
     <% include ../views/partials/_head %>
-    <link rel="stylesheet" href="/styles/cart.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/menu.css" type="text/css" />
   </head>
 
   <body>
@@ -11,13 +11,6 @@
     <div class ="lower">
     <div class="container">
 
-      <form action="/cart/add" id="id=add-to-cart-button" method="POST" style="margin:150px;">
-        <input type="submit" name="button" value="Add To Cart">
-        <input type = "hidden" name = "item_price" value = "5" >
-        <input type = "hidden" name = "item_id" value = "01" >
-        <input type="text" name="item_quantity">
-      </form>
-      
       <h1> Menu </h1>
       <hr>
       <table id="menu" class="table table-hover table-condensed">
@@ -34,29 +27,41 @@
               <div class="row">
                 <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
                 <div class="col-sm-10">
-                  <h4 class="nomargin">Product 1</h4>
+                  <h4 class="nomargin">Hamburger</h4>
                   <p>Pour-over meggings pitchfork, put a bird on it selvage twee man bun. Chicharrones sriracha church-key dreamcatcher cornhole, gluten-free cray forage kitsch prism. Hot chicken portland drinking vinegar tacos. Chia echo park whatever, salvia kinfolk venmo vape godard af beard.</p>
                 </div>
               </div>
             </td>
             <td data-th="Price">$1.99</td>
+
             <td class="actions" data-th="">
-              <button class="btn btn-default btn-sm"><i class="fa fa-shopping-cart"></i></button>
+              <form action="/cart/add" id="add-to-cart-button" method="POST">
+                <input type="submit" name="button" value="Add To Cart">
+                <input type = "hidden" name = "item_price" value = "5" >
+                <input type = "hidden" name = "item_id" value = "01" >
+                <input type="text" name="item_quantity">
+              </form>
             </td>
+
           </tr>
           <tr>
             <td data-th="Product">
               <div class="row">
                 <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
                 <div class="col-sm-10">
-                  <h4 class="nomargin">Product 2</h4>
+                  <h4 class="nomargin">Pizza</h4>
                     <p>Cronut put a bird on it knausgaard hexagon shoreditch, venmo single-origin coffee pabst butcher  mustache. Poke microdosing slow-carb, irony kickstarter kale chips flexitarian bushwick squid cliche. Live-edge man bun affogato, food truck locavore vegan occupy.</p>
                 </div>
               </div>
             </td>
             <td data-th="Price">$5.99</td>
             <td class="actions" data-th="">
-              <button class="btn btn-default btn-sm"><i class="fa fa-shopping-cart"></i></button>
+              <form action="/cart/add" id="add-to-cart-button" method="POST">
+                <input type="submit" name="button" value="Add To Cart">
+                <input type = "hidden" name = "item_price" value = "5" >
+                <input type = "hidden" name = "item_id" value = "01" >
+                <input type="text" name="item_quantity">
+              </form>
             </td>
           </tr>
           <tr>
@@ -64,22 +69,24 @@
               <div class="row">
                 <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
                 <div class="col-sm-10">
-                  <h4 class="nomargin">Product 3</h4>
+                  <h4 class="nomargin">Chips</h4>
                     <p>Pour-over meggings pitchfork, put a bird on it selvage twee man bun. Chicharrones sriracha church-key dreamcatcher cornhole, gluten-free cray forage kitsch prism. Hot chicken portland drinking vinegar tacos. Chia echo park whatever, salvia kinfolk venmo vape godard af beard.</p>
                 </div>
               </div>
             </td>
             <td data-th="Price">$9000.99</td>
             <td class="actions" data-th="">
-              <button class="btn btn-default btn-sm"><i class="fa fa-shopping-cart"></i></button>
+              <form action="/cart/add" id="add-to-cart-button" method="POST">
+                <input type="submit" name="button" value="Add To Cart">
+                <input type = "hidden" name = "item_price" value = "5" >
+                <input type = "hidden" name = "item_id" value = "01" >
+                <input type="text" name="item_quantity">
+              </form>
             </td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
-            <!-- <td><a href="/menu" class="btn btn-default"><i class="fa fa-angle-left"></i> Continue Shopping</a></td> -->
-            <!-- <td colspan="2" class="hidden-xs"></td> -->
-            <!-- <td class="hidden-xs text-center"><strong>Total $1.99</strong></td> -->
             <td><a href="/cart" class="btn btn-default btn-block">Cart <i class="fa fa-angle-right"></i></a></td>
           </tr>
         </tfoot>
