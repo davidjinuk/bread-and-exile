@@ -47,6 +47,7 @@ app.use("/api/orders", ordersRoutes(knex));
 
 app.use("/api/order_entries", order_entriesRoutes(knex));
 
+
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
@@ -54,6 +55,10 @@ app.get("/", (req, res) => {
 
 app.get("/menu", (req, res) => {
   res.render("menu");
+});
+
+app.get("/cart", (req,res) => {
+  res.render("cart");
 });
 
 app.listen(PORT, () => {
