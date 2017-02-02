@@ -11,7 +11,6 @@ const app         = express();
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
-console.log(knex);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
 
@@ -51,6 +50,10 @@ app.use("/api/order_entries", order_entriesRoutes(knex));
 // Home page
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/menu", (req, res) => {
+  res.render("menu");
 });
 
 app.listen(PORT, () => {
