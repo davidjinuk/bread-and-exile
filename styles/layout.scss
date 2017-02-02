@@ -35,7 +35,7 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url("http://www.ubmi.net/wp-content/uploads/2016/10/temp2.jpg") no-repeat center center;
+    background: url("https://cdn.shopify.com/s/files/1/0790/5353/files/vwqm9mbzddw-artur-rutkowski.jpg?5009993616180143350") no-repeat center center;
     background-size: cover;
 }
 
@@ -1792,6 +1792,13 @@ pre code {
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
 }
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+    width: 200px;
+}
+
 .col-xs-12 {
   width: 100%;
 }
@@ -4664,8 +4671,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-color: #212121;
+  border-color: #212121;
 }
 .navbar-default .navbar-brand {
   color: #777;
@@ -4679,7 +4686,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: white;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -6926,4 +6933,3 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
-
