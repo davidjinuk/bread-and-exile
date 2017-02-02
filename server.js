@@ -47,6 +47,9 @@ app.use("/api/orders", ordersRoutes(knex));
 
 app.use("/api/order_entries", order_entriesRoutes(knex));
 
+const data = {};
+let order_id = generateRandomString();
+
 
 // Home page
 app.get("/", (req, res) => {
@@ -61,6 +64,44 @@ app.get("/cart", (req,res) => {
   res.render("cart");
 });
 
+app.post("/cart/add", (req,res) => {
+  // console.log(req.body.name);
+  console.log(req.body.item_quantity);
+console.log(req.body.item_price);
+
+
+addItemToCart();
+
+  function addItemToCart() {
+    let item_quantity = Number(req.body.item_quantity);
+    let item_id = req.body.item_id
+    let item_price = Number(req.body.item_price);
+    let order_total = item_quantity * item_price;
+
+    if (data[order_id]) {
+    data[order_id].push({ // hamburger
+        "id": item_id,
+        "item_quantity": item_quantity,
+        "order_total": order_total
+      })
+      } else {
+        data[order_id] = [{ //hotdog
+            "id": item_id,
+            "item_quantity": item_quantity,
+            "order_total": order_total
+          }]
+          }
+        }
+
+  // addItemToCart(1, 3, 5);
+  console.log(data);
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
+
+function generateRandomString() {
+ var result = Math.random().toString(36).substr(2, 6);
+ return result;
+}

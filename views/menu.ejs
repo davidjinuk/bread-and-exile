@@ -10,6 +10,14 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <div class ="lower">
     <div class="container">
+
+      <form action="/cart/add" id="id=add-to-cart-button" method="POST" style="margin:150px;">
+        <input type="submit" name="button" value="Add To Cart">
+        <input type = "hidden" name = "item_price" value = "5" >
+        <input type = "hidden" name = "item_id" value = "01" >
+        <input type="text" name="item_quantity">
+      </form>
+      
       <h1> Menu </h1>
       <hr>
       <table id="menu" class="table table-hover table-condensed">
