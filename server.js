@@ -24,7 +24,6 @@ const order_entriesRoutes = require("./routes/order_entries");
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
-
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
@@ -60,17 +59,43 @@ app.get("/menu", (req, res) => {
   res.render("menu");
 });
 
+
 app.get("/api/cart", (req, res) => {
-  knex
-    .select("*")
-    .from("menues")
-    .where({"id": 1}).orWhere({"id": 8}).orWhere({"id": 3})
-    .then((results) => {
-      res.json(results);
+
+  let ids = [];
+
+  data[order_id].forEach((obj) =>{
+    ids.push(obj.item_id);
   });
-// });
-//   res.json(data);
+
+  knex
+      .select("*")
+      .from("menues")
+      .whereIn('id', ids)
+      .then((results) => {
+       res.json(results);
+       console.log('hello?');
+      // let i = 0;
+      data[order_id].forEach((obj) => {
+
+        let foundObject = results.filter(function(apiobject){
+          return obj.item_id == apiobject.id
+
+        })
+
+        if(foundObject){
+          obj.description = foundObject[0].description;
+          obj.item_price  = foundObject[0].price;
+          obj.name = foundObject[0].name;
+        }
+        console.log(data);
+
+      });
 });
+
+});
+
+
 app.get("/cart", (req,res) => {
   let templateVars = {
     order_id: order_id,
@@ -117,16 +142,18 @@ addItemToCart();
      });
 
      if(!condition) {
-       orderArr.push({ // hamburger
-           "id": item_id,
+       orderArr.push({
+          "order_id": order_id,
+           "item_id": item_id,
            "item_quantity": item_quantity,
            "order_total": order_total
          })
        }
 
     } else {
-        data[order_id] = [{ //hotdog
-            "id": item_id,
+        data[order_id] = [{
+            "order_id": order_id,
+            "item_id": item_id,
             "item_quantity": item_quantity,
             "order_total": order_total
           }]
