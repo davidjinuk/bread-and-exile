@@ -60,31 +60,73 @@ app.get("/menu", (req, res) => {
   res.render("menu");
 });
 
-app.get("/cart", (req,res) => {
-  res.render("cart");
+app.get("/api/cart", (req, res) => {
+  knex
+    .select("*")
+    .from("menues")
+    .where({"id": 1}).orWhere({"id": 8}).orWhere({"id": 3})
+    .then((results) => {
+      res.json(results);
+  });
+// });
+//   res.json(data);
 });
+app.get("/cart", (req,res) => {
+  let templateVars = {
+    order_id: order_id,
+    database: data
+  }
+  res.render("cart", templateVars);
+});
+
+app.post("/checkout", (req,res) => {
+  res.render("confirmation");
+
+})
+
+app.get("/confirmation", (req,res) => {
+  res.render("confirmation");
+})
 
 app.post("/cart/add", (req,res) => {
   // console.log(req.body.name);
   console.log(req.body.item_quantity);
   console.log(req.body.item_price);
 
+let condition;
+
 
 addItemToCart();
+
 
   function addItemToCart() {
     let item_quantity = Number(req.body.item_quantity);
     let item_id = req.body.item_id
     let item_price = Number(req.body.item_price);
     let order_total = item_quantity * item_price;
+    let orderArr = data[order_id];
+    if (orderArr) {
 
-    if (data[order_id]) {
-    data[order_id].push({ // hamburger
-        "id": item_id,
-        "item_quantity": item_quantity,
-        "order_total": order_total
-      })
-      } else {
+      orderArr.forEach(function(obj, index){
+        if(obj.id === item_id){
+          console.log("Item already in array");
+          obj.item_quantity = item_quantity;
+          obj.order_total = order_total;
+          condition = true;
+       }
+
+     });
+
+     if(!condition) {
+       console.log("Item shouldn't be in array");
+       orderArr.push({ // hamburger
+           "id": item_id,
+           "item_quantity": item_quantity,
+           "order_total": order_total
+         })
+       }
+
+    } else {
         data[order_id] = [{ //hotdog
             "id": item_id,
             "item_quantity": item_quantity,
@@ -96,6 +138,8 @@ addItemToCart();
   // addItemToCart(1, 3, 5);
   console.log(data);
 });
+
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
