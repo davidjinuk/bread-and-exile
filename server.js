@@ -109,7 +109,6 @@ addItemToCart();
 
       orderArr.forEach(function(obj, index){
         if(obj.id === item_id){
-          console.log("Item already in array");
           obj.item_quantity = item_quantity;
           obj.order_total = order_total;
           condition = true;
@@ -118,7 +117,6 @@ addItemToCart();
      });
 
      if(!condition) {
-       console.log("Item shouldn't be in array");
        orderArr.push({ // hamburger
            "id": item_id,
            "item_quantity": item_quantity,
