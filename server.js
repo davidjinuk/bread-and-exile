@@ -73,9 +73,8 @@ app.get("/api/cart", (req, res) => {
       .from("menues")
       .whereIn('id', ids)
       .then((results) => {
-       res.json(results);
+       // res.json(results);
        console.log('hello?');
-      // let i = 0;
       data[order_id].forEach((obj) => {
 
         let foundObject = results.filter(function(apiobject){
@@ -88,7 +87,7 @@ app.get("/api/cart", (req, res) => {
           obj.item_price  = foundObject[0].price;
           obj.name = foundObject[0].name;
         }
-        console.log(data);
+        res.json(data);
 
       });
 });
@@ -98,8 +97,8 @@ app.get("/api/cart", (req, res) => {
 
 app.get("/cart", (req,res) => {
   let templateVars = {
-    order_id: order_id,
-    database: data
+    cart: data,
+    order_id: order_id
   }
   res.render("cart", templateVars);
 });

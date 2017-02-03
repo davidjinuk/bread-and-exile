@@ -10,11 +10,6 @@
 
 </style>
   <body>
-    <div>
-      <% database[order_id].forEach(function (orderentry){ %>
-      <div> <%=orderentry.id%> </div>
-        <% }) %>
-    </div>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <div class ="lower">
     <div class="container">
@@ -34,10 +29,18 @@
     						<tr>
     							<td data-th="Product">
     								<div class="row">
+
     									<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
     									<div class="col-sm-10">
     										<h4 class="nomargin">Product 1</h4>
     										<p>Pour-over meggings pitchfork, put a bird on it selvage twee man bun. Chicharrones sriracha church-key dreamcatcher cornhole, gluten-free cray forage kitsch prism. Hot chicken portland drinking vinegar tacos. Chia echo park whatever, salvia kinfolk venmo vape godard af beard.</p>
+                        <div>
+                    <% cart[order_id].forEach(function (orderentry){ %>
+
+                      <div> <%= orderentry.name %>  </div>
+
+                    <% }) %>
+                    </div>
     									</div>
     								</div>
     							</td>
