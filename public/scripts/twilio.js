@@ -26,8 +26,8 @@ function stringifyOrder (arr){
   arr.forEach((obj) => {
     stringOrder += obj.item_quantity;
     stringOrder += "%20"
-    stringOrder += obj.name;
-    stringOrder += "%20"
+    stringOrder += (obj.name + "s");
+    stringOrder += ","
   });
     return stringOrder;
 }
