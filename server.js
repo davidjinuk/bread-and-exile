@@ -13,6 +13,8 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const twil = require("twilio");
+const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -54,44 +56,56 @@ function generateRandomString() {
 const data = {};
 let order_id = generateRandomString();
 
+
+app.post("/twilio", (req, res) => {
+
+    console.log("Your order will be ready in", req.body.Digits, "minutes");
+
+});
+
 app.get("/contact", (req, res) =>{
 
-  let ids = [];
+  // let ids = [];
 
-  data[order_id].forEach((obj) =>{
-    ids.push(obj.item_id);
-  });
+  // data[order_id].forEach((obj) =>{
+  //   ids.push(obj.item_id);
+  // });
 
-  knex
-      .select("*")
-      .from("menues")
-      .whereIn('id', ids)
-      .then((results) => {
-      data[order_id].forEach((obj) => {
+  // knex
+  //     .select("*")
+  //     .from("menues")
+  //     .whereIn('id', ids)
+  //     .then((results) => {
+  //     data[order_id].forEach((obj) => {
 
-        let foundObject = results.filter(function(apiobject){
-          return obj.item_id == apiobject.id
+  //       let foundObject = results.filter(function(apiobject){
+  //         return obj.item_id == apiobject.id
 
-        })
+  //       })
 
-        if(foundObject){
-          obj.description = foundObject[0].description;
-          obj.item_price  = foundObject[0].price;
-          obj.name = foundObject[0].name;
-        }
+  //       if(foundObject){
+  //         obj.description = foundObject[0].description;
+  //         obj.item_price  = foundObject[0].price;
+  //         obj.name = foundObject[0].name;
+  //       }
 
-      });
+  //     });
 
-    twilio.textRestaurant("Steven Bamford", data, order_id, process.env.PHONE_NUMBER);
-    twilio.callRestaurant("StevenBamford", data, order_id, process.env.PHONE_NUMBER);
-    return;
+    // twilio.textRestaurant("Steven Bamford", data, order_id, process.env.PHONE_NUMBER);
+     twilio.callRestaurant("StevenBamford", data, order_id, process.env.PHONE_NUMBER);
 
-// console.log(data);
-  // twilio.callRestaurant("StevenBamford", data[order_id], process.env.PHONE_NUMBER);
-  // twilio.textRestaurant("StevenBamford", data, order_id, process.env.PHONE_NUMBER);
+ //    client.calls.create({
+ //     // url: "http://demo.twilio.com/docs/voice.xml",
+ //     url: "http://fc905147.ngrok.io/twilio",
+ //     to: "+16049161859",
+ //     from: "+16043301523"
+ // }, function(err, call) {
+ //     console.log("Call made");
+ //     process.stdout.write(call.sid);
+ // });
 
-  });
 });
+
 
 // Home page
 app.get("/", (req, res) => {
