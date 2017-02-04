@@ -22,14 +22,6 @@ $(() => {
       console.log("CREATE CART ITEM");
       console.log(orders.name);
       let $menu = `
-      <table id="menu" class="table table-hover table-condensed">
-        <thead>
-          <tr>
-            <th style="width:50%">Product</th>
-            <th style="width:10%">Price</th>
-            <th style="width:10%"></th>
-          </tr>
-        </thead>
         <tbody>
           <tr>
             <td data-th="Product">
