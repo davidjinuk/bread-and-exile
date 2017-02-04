@@ -3,6 +3,7 @@
 
   <head>
     <% include ../views/partials/_head %>
+    <script src="../scripts/menu.js"></script>
     <link rel="stylesheet" href="/styles/menu.css" type="text/css" />
   </head>
 
@@ -14,77 +15,7 @@
       <h1> Menu </h1>
       <hr>
       <table id="menu" class="table table-hover table-condensed">
-        <thead>
-          <tr>
-            <th style="width:50%">Product</th>
-            <th style="width:10%">Price</th>
-            <th style="width:10%"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-th="Product">
-              <div class="row">
-                <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-                <div class="col-sm-10">
-                  <h4 class="nomargin">Pizza</h4>
-                  <p>A mouth-watering combination of pepperoni, savory Italian sausage, fresh green peppers, fresh mushrooms, fresh onions and cheese.</p>
-                </div>
-              </div>
-            </td>
-            <td data-th="Price">$10</td>
 
-            <td class="actions" data-th="">
-              <form action="/cart/add" id="add-to-cart-button" method="POST">
-                <input type="submit" name="button" value="Add To Cart">
-                <input type = "hidden" name = "item_price" value = "10" >
-                <input type = "hidden" name = "item_id" value = "1" >
-                <input type="text" name="item_quantity">
-              </form>
-            </td>
-
-          </tr>
-          <tr>
-            <td data-th="Product">
-              <div class="row">
-                <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-                <div class="col-sm-10">
-                  <h4 class="nomargin">Burger</h4>
-                    <p>Delicious, carefully selected, juicy, tender cuts of 100% Angus beef sourced from Canadian farms. Top that with a smoky Angus sauce, hickory smoked bacon pieces, crisp leaf lettuce, tomato, processed cheese and grilled onions, served on a sesame and poppy seed bun. Then, and only then, can you call it “Mighty.”</p>
-                </div>
-              </div>
-            </td>
-            <td data-th="Price">$5</td>
-            <td class="actions" data-th="">
-              <form action="/cart/add" id="add-to-cart-button" method="POST">
-                <input type="submit" name="button" value="Add To Cart">
-                <input type = "hidden" name = "item_price" value = "5" >
-                <input type = "hidden" name = "item_id" value = "2" >
-                <input type="text" name="item_quantity">
-              </form>
-            </td>
-          </tr>
-          <tr>
-            <td data-th="Product">
-              <div class="row">
-                <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
-                <div class="col-sm-10">
-                  <h4 class="nomargin">Chips</h4>
-                    <p>Miss Vickie's® Original Recipe kettle cooked potato chips are expertly seasoned with sea salt and are packed with that signature Miss Vickie's® crunch. </p>
-                </div>
-              </div>
-            </td>
-            <td data-th="Price">$2</td>
-            <td class="actions" data-th="">
-              <form action="/cart/add" id="add-to-cart-button" method="POST">
-                <input type="submit" name="button" value="Add To Cart">
-                <input type = "hidden" name = "item_price" value = "2" >
-                <input type = "hidden" name = "item_id" value = "3" >
-                <input type="text" name="item_quantity">
-              </form>
-            </td>
-          </tr>
-        </tbody>
         <tfoot>
           <tr>
             <td><a href="/cart" class="btn btn-default btn-block">Cart <i class="fa fa-angle-right"></i></a></td>
