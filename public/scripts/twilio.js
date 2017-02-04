@@ -46,7 +46,6 @@ function smsOrder (arr){
 
 function generateBinUrl(customer, strOrder){
 
-  // let order = stringifyOrder(arr);
   let url = "https://handler.twilio.com/twiml/EH954d03a8e1d06f8b390bda95cc5a2bc8?Name=" + customer + "&Order=" + strOrder;
   return url;
 }
@@ -89,14 +88,11 @@ function textRestaurant(customer, db, orderid, number){
   });
 }
 
-// textRestaurant("Steven Bamford", "adsad24", phoneNumber);
-
-// callRestaurant("StevenBamford", "adsad24", phoneNumber);
-
 module.exports = {
 
   callRestaurant: callRestaurant,
   textRestaurant: textRestaurant,
 }
+
 
 

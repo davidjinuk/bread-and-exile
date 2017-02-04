@@ -58,51 +58,16 @@ let order_id = generateRandomString();
 
 
 app.post("/twilio", (req, res) => {
-
+    let time = req.body.Digit;
     console.log("Your order will be ready in", req.body.Digits, "minutes");
+    res.json(time);
 
 });
 
 app.get("/contact", (req, res) =>{
 
-  // let ids = [];
-
-  // data[order_id].forEach((obj) =>{
-  //   ids.push(obj.item_id);
-  // });
-
-  // knex
-  //     .select("*")
-  //     .from("menues")
-  //     .whereIn('id', ids)
-  //     .then((results) => {
-  //     data[order_id].forEach((obj) => {
-
-  //       let foundObject = results.filter(function(apiobject){
-  //         return obj.item_id == apiobject.id
-
-  //       })
-
-  //       if(foundObject){
-  //         obj.description = foundObject[0].description;
-  //         obj.item_price  = foundObject[0].price;
-  //         obj.name = foundObject[0].name;
-  //       }
-
-  //     });
-
-    // twilio.textRestaurant("Steven Bamford", data, order_id, process.env.PHONE_NUMBER);
-     twilio.callRestaurant("StevenBamford", data, order_id, process.env.PHONE_NUMBER);
-
- //    client.calls.create({
- //     // url: "http://demo.twilio.com/docs/voice.xml",
- //     url: "http://fc905147.ngrok.io/twilio",
- //     to: "+16049161859",
- //     from: "+16043301523"
- // }, function(err, call) {
- //     console.log("Call made");
- //     process.stdout.write(call.sid);
- // });
+  twilio.textRestaurant("Steven Bamford", data, order_id, process.env.PHONE_NUMBER);
+  twilio.callRestaurant("StevenBamford", data, order_id, process.env.PHONE_NUMBER);
 
 });
 
