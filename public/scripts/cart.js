@@ -8,6 +8,7 @@ $(() => {
           for(let orderID in cartData){
             console.log(cartData[orderID]);
             renderData(cartData[orderID]);
+            calculateTotal(cartData[orderID]);
           }
         }
       });
@@ -41,5 +42,14 @@ $(() => {
   }
 
   loadData();
+
+  function calculateTotal (arrOfObjects){
+    let total = 0;
+    arrOfObjects.forEach(function (object){
+      total += object.order_total;
+    })
+
+    $("td.hidden-xs.text-center").text("Total: $" + total);
+  }
 
 });
