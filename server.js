@@ -60,7 +60,7 @@ app.get("/menu", (req, res) => {
 });
 
 
-app.get("/api/cart", (req, res) => {
+app.post("/api/cart", (req, res) => {
 
   let ids = [];
 
@@ -87,10 +87,13 @@ app.get("/api/cart", (req, res) => {
           obj.item_price  = foundObject[0].price;
           obj.name = foundObject[0].name;
         }
-        res.json(data);
 
       });
+      res.json(data);
+
 });
+
+
 
 });
 
@@ -132,7 +135,7 @@ addItemToCart();
     if (orderArr) {
 
       orderArr.forEach(function(obj, index){
-        if(obj.id === item_id){
+        if(obj.item_id === item_id){
           obj.item_quantity = item_quantity;
           obj.order_total = order_total;
           condition = true;
