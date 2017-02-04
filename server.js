@@ -8,7 +8,7 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
-
+const twilio      = require("./public/scripts/twilio");
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
@@ -46,9 +46,52 @@ app.use("/api/orders", ordersRoutes(knex));
 
 app.use("/api/order_entries", order_entriesRoutes(knex));
 
+function generateRandomString() {
+ var result = Math.random().toString(36).substr(2, 6);
+ return result;
+}
+
 const data = {};
 let order_id = generateRandomString();
 
+app.get("/contact", (req, res) =>{
+
+  let ids = [];
+
+  data[order_id].forEach((obj) =>{
+    ids.push(obj.item_id);
+  });
+
+  knex
+      .select("*")
+      .from("menues")
+      .whereIn('id', ids)
+      .then((results) => {
+      data[order_id].forEach((obj) => {
+
+        let foundObject = results.filter(function(apiobject){
+          return obj.item_id == apiobject.id
+
+        })
+
+        if(foundObject){
+          obj.description = foundObject[0].description;
+          obj.item_price  = foundObject[0].price;
+          obj.name = foundObject[0].name;
+        }
+
+      });
+
+    twilio.textRestaurant("Steven Bamford", data, order_id, process.env.PHONE_NUMBER);
+    twilio.callRestaurant("StevenBamford", data, order_id, process.env.PHONE_NUMBER);
+    return;
+
+// console.log(data);
+  // twilio.callRestaurant("StevenBamford", data[order_id], process.env.PHONE_NUMBER);
+  // twilio.textRestaurant("StevenBamford", data, order_id, process.env.PHONE_NUMBER);
+
+  });
+});
 
 // Home page
 app.get("/", (req, res) => {
@@ -73,8 +116,6 @@ app.post("/api/cart", (req, res) => {
       .from("menues")
       .whereIn('id', ids)
       .then((results) => {
-       // res.json(results);
-       console.log('hello?');
       data[order_id].forEach((obj) => {
 
         let foundObject = results.filter(function(apiobject){
@@ -161,8 +202,6 @@ addItemToCart();
           }]
           }
         }
-
-  // addItemToCart(1, 3, 5);
   console.log(data);
 });
 
@@ -172,7 +211,3 @@ app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
 
-function generateRandomString() {
- var result = Math.random().toString(36).substr(2, 6);
- return result;
-}
