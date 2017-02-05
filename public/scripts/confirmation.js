@@ -38,4 +38,23 @@ $(() => {
 
   loadData();
 
+//  $.ajax({
+//    method: "GET",
+//    url: "/contact",
+//    success: function(response){
+//      console.log("contacted restaurant");
+//    }
+//  });
+
+
+// setInterval( function(){
+//   $.ajax({
+//     method: "GET",
+//     url: "/twilio",
+//     success: function(response){
+//       console.log(response);
+//     }
+//   });
+//  }, 5000);
+
 });

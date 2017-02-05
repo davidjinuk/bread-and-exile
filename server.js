@@ -55,14 +55,24 @@ function generateRandomString() {
 
 const data = {};
 let order_id = generateRandomString();
-
+let orderCompletionTime = {};
 
 app.post("/twilio", (req, res) => {
-    let time = req.body.Digit;
+    let time = req.body.Digits;
+    orderCompletionTime = {
+      "time": time
+    }
     console.log("Your order will be ready in", req.body.Digits, "minutes");
     res.json(time);
 
 });
+
+
+app.get("/twilio", (req, res) => {
+
+res.json(orderCompletionTime);
+
+})
 
 app.get("/contact", (req, res) =>{
 
