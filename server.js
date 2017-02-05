@@ -83,6 +83,12 @@ app.get("/contact", (req, res) =>{
 
 });
 
+app.get("/contact/customer", (req, res) =>{
+
+  twilio.textCustomer("Steven Bamford", orderCompletionTime);
+
+});
+
 
 // Home page
 app.get("/", (req, res) => {

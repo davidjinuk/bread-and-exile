@@ -75,7 +75,7 @@ $(() => {
           $("#loadingGIF").hide();
           clearInterval(interval);
       }
-   }
+    }
   })}, 5000);
 
 });

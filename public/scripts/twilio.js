@@ -91,10 +91,30 @@ function textRestaurant(customer, db, orderid, number){
   });
 }
 
+
+function textCustomer (customer, time){
+  client.sms.messages.create({
+    to: "+16048623569",
+    from:"+16043301523",
+    body:"Hi " + customer + ", your order from Bread & Exile will be ready in " + time.time
+  }, function(error, message) {
+
+    if (!error) {
+      console.log('Success! The SID for this SMS message is:');
+      console.log(message.sid);
+      console.log('Message sent on:');
+      console.log(message.dateCreated);
+    } else {
+      console.log('Oops! There was an error.');
+    }
+  });
+}
+
 module.exports = {
 
   callRestaurant: callRestaurant,
   textRestaurant: textRestaurant,
+  textCustomer: textCustomer
 }
 
 
