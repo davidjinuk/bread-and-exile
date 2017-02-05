@@ -128,11 +128,18 @@ app.get("/cart", (req,res) => {
 
 app.post("/checkout", (req,res) => {
 
+  let total = 0;
+  data[order_id].forEach(function (obj){
+    total += obj.order_total;
+  })
+
+  knex('orders').insert({'order_id': order_id, 'total': total}).then(function (result) {
+  });
+
   data[order_id].forEach(function (obj){
 
     knex('order_entries').insert({'order_id': order_id, 'item_id': obj.item_id, 'item_quantity': obj.item_quantity, 'order_total': obj.order_total})
     .then(function (result) {
-
     });
 
   })
