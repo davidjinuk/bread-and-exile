@@ -9,6 +9,8 @@ $(() => {
           for(let orderID in cartData){
             console.log(cartData[orderID]);
             renderData(cartData[orderID]);
+            calculateTotal(cartData[orderID]);
+            orderNumber(orderID);
           }
         }
       });
@@ -28,14 +30,28 @@ $(() => {
           <div class="row">
             <div class="col-sm-10">
               <h4 class="nomargin">${object.name}</h4>
-                <p>${object.description}</p>
             </div>
-            <td data-th="Quantity" class="text-center">${object.item_quantity}</td>
+          </div>
+        <td data-th="Quantity" class="text-center">${object.item_quantity}</td>
+        <td data-th="Subtotal" class="text-center">$${object.order_total}</td>
       </tr>
     `;
     return $item;
   }
 
   loadData();
+
+  function calculateTotal (arrOfObjects){
+    let total = 0;
+    arrOfObjects.forEach(function (object){
+      total += object.order_total;
+    })
+
+    $("td.hidden-xs.text-center").text("Total: $" + total);
+  }
+
+  function orderNumber (orderID) {
+    $("p.orderID").append(orderID);
+  }
 
 });
