@@ -54,4 +54,28 @@ $(() => {
     $("p.orderID").append(orderID);
   }
 
+  $.ajax({
+    method: "GET",
+    url: "/contact",
+    success: function(response){
+      console.log("contacted restaurant");
+    }
+  });
+
+
+ var interval = setInterval( function(){
+   $.ajax({
+     method: "GET",
+     url: "/twilio",
+     success: function(response){
+      if(response.time > 0){
+          console.log(response);
+          $("p.orderID").text("Your order will be ready in " + response.time + " minutes.");
+          $("p.please-wait").hide();
+          $("#loadingGIF").hide();
+          clearInterval(interval);
+      }
+   }
+  })}, 5000);
+
 });
