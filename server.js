@@ -127,9 +127,18 @@ app.get("/cart", (req,res) => {
 });
 
 app.post("/checkout", (req,res) => {
-  res.render("confirmation");
 
-})
+  data[order_id].forEach(function (obj){
+
+    knex('order_entries').insert({'order_id': order_id, 'item_id': obj.item_id, 'item_quantity': obj.item_quantity, 'order_total': obj.order_total})
+    .then(function (result) {
+
+    });
+
+  })
+
+  res.render("confirmation");
+});
 
 app.get("/confirmation", (req,res) => {
   res.render("confirmation");
