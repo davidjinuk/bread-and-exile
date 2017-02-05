@@ -29,7 +29,7 @@ function stringifyOrder (arr){
     stringOrder += (obj.name + "s");
     stringOrder += ","
   });
-    stringOrder = stringOrder.replace("'", "");
+    stringOrder = stringOrder.replace(/[’]/g, "");
     stringOrder = stringOrder.replace(/\s/g, "%20");
     stringOrder = stringOrder.replace("-", "%20");
     return stringOrder;
