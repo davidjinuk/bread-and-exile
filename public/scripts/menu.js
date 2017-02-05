@@ -12,6 +12,8 @@ $(() => {
      });
    }
 
+
+
    function renderData(arrOfObjects) {
      arrOfObjects.forEach(function(object){
        $("#menu").append(createMenuItem(object))
@@ -50,6 +52,7 @@ $(() => {
         return $menu
         }
         // <input type="text" name="item_quantity">
+
 
 
         // <td data-th="Quantity">
