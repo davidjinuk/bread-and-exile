@@ -94,7 +94,7 @@ function textRestaurant(customer, db, orderid, number){
 
 function textCustomer (customer, time){
   client.sms.messages.create({
-    to: "+16048623569",
+    to: "+17789879134",
     from:"+16043301523",
     body:"Hi " + customer + ", your order from Bread & Exile will be ready in " + time.time
   }, function(error, message) {

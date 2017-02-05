@@ -85,7 +85,7 @@ app.get("/contact", (req, res) =>{
 
 app.get("/contact/customer", (req, res) =>{
 
-  twilio.textCustomer("Steven Bamford", orderCompletionTime);
+  twilio.textCustomer("David", orderCompletionTime);
 
 });
 

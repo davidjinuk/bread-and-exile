@@ -74,6 +74,14 @@ $(() => {
           $("p.please-wait").hide();
           $("#loadingGIF").hide();
           clearInterval(interval);
+
+          $.ajax({
+            method: "GET",
+            url: "/contact/customer",
+            success: function(response){
+
+            }
+          })
       }
     }
   })}, 5000);
