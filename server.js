@@ -152,6 +152,7 @@ addItemToCart();
     let item_price = Number(req.body.item_price);
     let order_total = item_quantity * item_price;
     let orderArr = data[order_id];
+
     if (orderArr) {
 
       orderArr.forEach(function(obj, index){
@@ -189,4 +190,3 @@ addItemToCart();
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
-

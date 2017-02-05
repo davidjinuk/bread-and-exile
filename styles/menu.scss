@@ -1,0 +1,36 @@
+
+.lower {
+  margin-top: 150px;
+}
+
+.btn-info {
+  margin-left: 200px;
+  background-color: #212121;
+
+
+}
+
+.btn-info:hover,
+.btn-info:focus,
+.btn-info:active,
+.btn-info:active:hover,
+.btn-info.active {
+  opacity: .5;
+  background-color: #212121;
+}
+
+
+
+
+#add-to-cart-button {
+  display: flex;
+}
+
+.form-control {
+  width: 56.22222px;
+}
+
+.btn-block {
+  width: 33%;
+  float: right;
+}
