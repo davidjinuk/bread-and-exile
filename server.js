@@ -103,6 +103,9 @@ app.get("/menu", (req, res) => {
 app.post("/api/cart", (req, res) => {
 
   let ids = [];
+  data[order_id] = data[order_id].filter(function( element ) {
+      return !!element;
+  });
 
   data[order_id].forEach((obj) =>{
     ids.push(obj.item_id);
@@ -142,6 +145,11 @@ app.get("/cart", (req,res) => {
     order_id: order_id
   }
   res.render("cart", templateVars);
+});
+
+app.post("/:index/delete", (req, res) => {
+  delete data[order_id][req.params.index];
+  res.redirect("/cart");
 });
 
 app.post("/checkout", (req,res) => {
