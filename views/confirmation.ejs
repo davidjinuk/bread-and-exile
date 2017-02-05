@@ -3,6 +3,7 @@
 
 <head>
     <% include ../views/partials/_head %>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/styles/confirmation.css" type="text/css" />
     <script src="../scripts/confirmation.js"></script>
 </head>
@@ -12,25 +13,34 @@
   <body>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <div class ="lower">
-    <div class="container">
-      <h1> ORDER PLACED </h1>
-      <hr>
-      <table id="confirmation" class="table table-hover table-condensed">
-                <thead>
-                <tr>
-                  <th style="width:30%">Product</th>
-                  <th style="width:8%">Quantity</th>
-                </tr>
-              </thead>
-              <tbody class="all-items">
+      <div class="container">
+        <h1> ORDER PLACED </h1>
+        <hr>
+        <table id="confirmation" class="table table-hover table-condensed">
+          <thead>
+            <tr>
+              <th style="width:30%">Product</th>
+              <th style="width:8%; text-align: center" >Quantity</th>
+              <th style="width:22%" class="text-center">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody class="all-items">
 
-              </tbody>
-              <tfoot>
-
-              </tfoot>
-            </table>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2" class="hidden-xs"></td>
+              <td class="hidden-xs text-center"><strong>Total</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+        <div style="text-align: center">
+          <p class="orderID">Thank you! Your order number is </p>
+        </div>
+        <div style="text-align: center">
+          <p>Please wait while your order is being processed &nbsp;<i class="fa fa-spinner fa-spin"></i></p>
+        </div>
+      </div>
     </div>
-</div>
   </body>
-
- </html>
+</html>

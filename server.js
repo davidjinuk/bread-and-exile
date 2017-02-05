@@ -148,7 +148,7 @@ app.post("/checkout", (req,res) => {
 });
 
 app.get("/confirmation", (req,res) => {
-  res.render("confirmation");
+  res.render("confirmation", templateVars);
 })
 
 app.post("/cart/add", (req,res) => {
