@@ -17,9 +17,13 @@ hr {
 }
 
 .cart-logo {
-  width: 65%;
+  width: 56%;
   float: right;
   margin-bottom: 40px;
+}
+
+.cart-logo img {
+  width: 38%;
 }
 
 @media screen and (max-width: 600px) {
