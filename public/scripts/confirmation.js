@@ -38,23 +38,27 @@ $(() => {
 
   loadData();
 
-//  $.ajax({
-//    method: "GET",
-//    url: "/contact",
-//    success: function(response){
-//      console.log("contacted restaurant");
-//    }
-//  });
+  $.ajax({
+    method: "GET",
+    url: "/contact",
+    success: function(response){
+      console.log("contacted restaurant");
+    }
+  });
 
 
-// setInterval( function(){
-//   $.ajax({
-//     method: "GET",
-//     url: "/twilio",
-//     success: function(response){
-//       console.log(response);
-//     }
-//   });
-//  }, 5000);
+ var interval = setInterval( function(){
+   $.ajax({
+     method: "GET",
+     url: "/twilio",
+     success: function(response){
+      if(response.time > 0){
+          console.log(response);
+          $(".order-process h2").text("Your order will be ready in " + response.time + " minutes");
+          $("#loadingGIF").hide();
+          clearInterval(interval);
+      }
+   }
+  })}, 5000);
 
 });
