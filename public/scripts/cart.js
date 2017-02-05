@@ -15,13 +15,15 @@ $(() => {
     }
 
   function renderData(arrOfObjects) {
-    arrOfObjects.forEach(function(object){
-      $(".all-items").append(createCartItem(object))
+    arrOfObjects.forEach(function(object, index){
+      console.log(object);
+      console.log(index);
+      $(".all-items").append(createCartItem(object, index))
     })
 
   }
 
-  function createCartItem (object){
+  function createCartItem (object, index){
     let $item = `
       <tr>
         <td data-th="Product">
@@ -34,17 +36,20 @@ $(() => {
             <td data-th="Quantity" class="text-center">${object.item_quantity}</td>
             <td data-th="Subtotal" class="text-center">$${object.order_total}</td>
             <td class="actions" data-th="">
-              <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+              <form action="/${index}/delete" method="POST">
+                <button name="delete" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
+                </button>
+              </form>
             </td>
       </tr>
     `;
+
     return $item;
   }
 
   loadData();
-
+  let total = 0;
   function calculateTotal (arrOfObjects){
-    let total = 0;
     arrOfObjects.forEach(function (object){
       total += object.order_total;
     })
