@@ -36,18 +36,24 @@ $(() => {
           <td data-th="Price">$${orders.price}</td>
           <td class="actions" data-th="">
             <form action="/cart/add" id="add-to-cart-button" method="POST">
-              <input type="submit" name="button" value="Add To Cart">
+              <input type="number" name="item_quantity" class="form-control text-center " value="1">
+              <input type="submit" name="button" class="btn btn-info" value="Add To Cart">
               <input type = "hidden" name = "item_price" value = "${orders.price}" >
               <input type = "hidden" name = "item_id" value = "${orders.id}" >
-              <input type="text" name="item_quantity">
+
             </form>
+            </td>
           </td>
          </tr>
          </tbody>
           `;
         return $menu
         }
+        // <input type="text" name="item_quantity">
 
+
+        // <td data-th="Quantity">
+        //   <input type="text" name="item_quantity" class="form-control text-center" value=1>
 
 loadData();
 

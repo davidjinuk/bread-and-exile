@@ -5,6 +5,7 @@
     <% include ../views/partials/_head %>
     <script src="../scripts/menu.js"></script>
     <link rel="stylesheet" href="/styles/menu.css" type="text/css" />
+
   </head>
 
   <body>
@@ -14,18 +15,19 @@
       <table id="menu" class="table table-hover table-condensed">
         <thead>
           <tr>
-            <th style="width:50%">Product</th>
+            <th style="width:50%">Bread Choices:</th>
             <th style="width:10%">Price</th>
-            <th style="width:10%"></th>
+            <th style="width:10%">Quantity</th>
           </tr>
         </thead>
 
         <tfoot>
-          <tr>
-            <td class="cart-button"><a href="/cart" class="btn btn-default btn-block"> Cart <i class="fa fa-angle-right"></i></a></td>
-          </tr>
+
         </tfoot>
       </table>
+      <tr>
+        <td class="cart-button"><a href="/cart" class="btn btn-warning btn-block">Go To Cart <i class="fa fa-angle-right"></i></a></td>
+      </tr>
     </div>
     </div>
   </body>
