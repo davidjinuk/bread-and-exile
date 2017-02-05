@@ -49,7 +49,25 @@ $(() => {
          </tr>
          </tbody>
           `;
-        return $menu
+
+          $("form#add-to-cart-button").on("submit", function(event){
+            event.preventDefault();
+
+            $.ajax({
+              url: "/cart/add",
+              method: "POST",
+              data: $(this).serialize(),
+              success: function(){
+              }
+            })
+          });
+
+          return $menu
+
+
+
+
+
         }
         // <input type="text" name="item_quantity">
 
