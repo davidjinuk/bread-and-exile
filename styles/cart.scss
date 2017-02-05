@@ -1,6 +1,6 @@
 
 .lower {
-  margin-top: 150px;
+  margin-top: 90px;
 }
 
 h1 {
@@ -15,6 +15,13 @@ hr {
 .table>tbody>tr>td, .table>tfoot>tr>td{
     vertical-align: middle;
 }
+
+.cart-logo {
+  width: 70%;
+  float: right;
+  margin-bottom: 40px;
+}
+
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control{
 		width:20%;
