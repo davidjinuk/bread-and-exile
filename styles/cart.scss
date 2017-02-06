@@ -26,6 +26,16 @@ hr {
   width: 38%;
 }
 
+.btn-warning {
+  display: inline-block;
+  float: right;
+}
+
+.btn-default {
+  display: inline-block;
+  float: left;
+}
+
 @media screen and (max-width: 600px) {
     table#cart tbody td .form-control{
 		width:20%;
@@ -42,6 +52,8 @@ hr {
 	.actions .btn-danger{
 		float:right;
 	}
+
+
 
 
 

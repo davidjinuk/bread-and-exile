@@ -1,55 +1,88 @@
- <!DOCTYPE html>
- <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <% include ../views/partials/_head %>
-    <% include ../views/partials/_header %>
+   <% include ../views/partials/_head %>
+   <% include ../views/partials/_header %>
 
-    <link rel="stylesheet" href="/styles/cart.css" type="text/css" />
-    <script src="../scripts/cart.js"></script>
- </head>
+
+   <link rel="stylesheet" href="/styles/cart.css" type="text/css" />
+   <script src="../scripts/cart.js"></script>
+</head>
 <style>
 
 </style>
-  <body>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <div class ="lower">
-    <div class="container">
-      <div class="cart-logo">
+ <body>
+   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+   <div class ="lower">
+   <div class="container">
+     <div class="cart-logo">
 <img src="https://cdn.shopify.com/s/files/1/0790/5353/files/Artboard_4.png?7709891575116393121"/>
 </div>
-    	<table id="cart" class="table table-hover table-condensed">
-        				<thead>
-    						<tr>
-    							<th style="width:50%">Product</th>
-    							<th style="width:10%">Price</th>
-    							<th style="width:8%">Quantity</th>
-    							<th style="width:22%" class="text-center">Subtotal</th>
-    							<th style="width:10%"></th>
-    						</tr>
-    					</thead>
-    					<tbody class="all-items">
+     <table id="cart" class="table table-hover table-condensed">
+               <thead>
+               <tr>
+                 <th style="width:50%">Product</th>
+                 <th style="width:10%">Price</th>
+                 <th style="width:8%">Quantity</th>
+                 <th style="width:22%" class="text-center">Subtotal</th>
+                 <th style="width:10%"></th>
+               </tr>
+             </thead>
+             <tbody class="all-items">
 
-    					</tbody>
-    					<tfoot>
-    						<tr class="visible-xs">
-    							<td class="text-center"><strong>Total 1.99</strong></td>
-    						</tr>
-    						<tr>
-    							<td><a href="/menu" class="btn btn-default"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
-    							<td colspan="2" class="hidden-xs"></td>
-    							<td class="hidden-xs text-center"><strong>Total</strong></td>
-    							<td>
-                    <form action="/checkout" method="POST">
-                      <button name="checkout" value="checkout" class="btn btn-default btn-block"> Checkout <i class="fa fa-angle-right"></i>
-                      </button>
-                    </form>
-                  </td>
-    						</tr>
-    					</tfoot>
-    				</table>
-    </div>
+             </tbody>
+             <tfoot>
+               <tr class="visible-xs">
+                 <td class="text-center"><strong>Total 1.99</strong></td>
+               </tr>
+               <tr>
+                 <td></td>
+                 <td colspan="2" class="hidden-xs"></td>
+                 <td class="hidden-xs text-center"><strong>Total</strong></td>
+                 <td>
+                 </td>
+               </tr>
+             </tfoot>
+           </table>
+
+           <a href="/menu" class="btn btn-default"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+           <form action="/checkout" method="post">
+          <input
+             type="submit"
+             value="Pay with Card"
+             class="btn btn-warning"
+             data-key="pk_test_9YmFtJBQ33VLGdj7aGhLOGyg"
+             data-amount=""
+             data-image="https://cdn.shopify.com/s/files/1/0790/5353/files/Artboard_1_f9e3392f-7d61-4697-9a04-9da87914b741.png?5142498904185720443"
+             data-currency="cad"
+             data-name="Bread & Exile"
+             data-description="Damn Good Bread"
+          />
+
+<script src="https://checkout.stripe.com/v2/checkout.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+$(document).ready(function() {
+   $(':submit').on('click', function(event) {
+       event.preventDefault();
+       var $button = $(this),
+           $form = $button.parents('form');
+       var opts = $.extend({}, $button.data(), {
+           token: function(result) {
+               $form.append($('<input class="btn btn-warning">').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
+           }
+       });
+       StripeCheckout.open(opts);
+   });
+});
+</script>
+</form>
+<!-- <form action="/checkout" method="POST">
+  <button name="checkout" value="checkout" class="btn btn-default btn-block"> Checkout
+  </button> -->
+<!-- </form> -->
 </div>
-  </body>
-
- </html>
+</div>
+</body>
+</html>

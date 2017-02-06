@@ -173,6 +173,8 @@ app.post("/checkout", (req,res) => {
   res.render("confirmation");
 });
 
+
+
 app.get("/confirmation", (req,res) => {
   res.render("confirmation", templateVars);
 })
