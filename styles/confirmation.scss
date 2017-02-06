@@ -1,0 +1,66 @@
+.lower {
+  margin-top: 150px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.table > tbody > tr > td, .table > tfoot > tr > td {
+  vertical-align: middle;
+}
+
+table#confirmation {
+  width: 50%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+
+@media screen and (max-width: 600px) {
+  table#confirmation tbody td .form-control {
+    width: 20%;
+    display: inline !important;
+  }
+  .actions .btn {
+    width: 36%;
+    margin: 1.5em 0;
+  }
+  .actions .btn-info {
+    float: left;
+  }
+  .actions .btn-danger {
+    float: right;
+  }
+
+  table#confirmation thead {
+    display: none;
+  }
+  table#confirmation tbody td {
+    display: block;
+    padding: .6rem;
+    min-width: 320px;
+  }
+
+  table#confirmation tbody tr td:first-child {
+    background: #333;
+    color: #fff;
+  }
+  table#confirmation tbody td:before {
+    content: attr(data-th);
+    font-weight: bold;
+    display: inline-block;
+    width: 8rem;
+  }
+  table#confirmation tfoot td {
+    display: block;
+  }
+  table#confirmation tfoot td .btn {
+    display: block;
+    background-
+  }
+}
+
+
