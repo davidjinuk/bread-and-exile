@@ -59,7 +59,10 @@ loadData();
 
 $("#menu").on("submit", "form", function(event){
   event.preventDefault();
-
+  $(this).find(".btn-info").val("Item Added!");
+  $(this).mouseleave(function(event){
+  $(this).find(".btn-info").val("Add To Cart");
+});
    $.ajax({
     url: "/cart/add",
     method: "POST",
