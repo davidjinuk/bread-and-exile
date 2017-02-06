@@ -50,34 +50,25 @@ $(() => {
          </tbody>
           `;
 
-          $("#menu").on("submit", "form", function(event){
-            event.preventDefault();
-
-             $.ajax({
-              url: "/cart/add",
-              method: "POST",
-              data: $(this).serialize(),
-              success: function(){
-                console.log("posted to cart");
-              }
-            })
-          });
 
           return $menu
-
-
-
-
-
         }
-        // <input type="text" name="item_quantity">
 
-
-
-        // <td data-th="Quantity">
-        //   <input type="text" name="item_quantity" class="form-control text-center" value=1>
 
 loadData();
+
+$("#menu").on("submit", "form", function(event){
+  event.preventDefault();
+
+   $.ajax({
+    url: "/cart/add",
+    method: "POST",
+    data: $(this).serialize(),
+    success: function(){
+      console.log("posted to cart");
+    }
+  })
+});
 
 //end of doc ready
 });
