@@ -50,14 +50,15 @@ $(() => {
          </tbody>
           `;
 
-          $("form#add-to-cart-button").on("submit", function(event){
+          $("#menu").on("submit", "form", function(event){
             event.preventDefault();
 
-            $.ajax({
+             $.ajax({
               url: "/cart/add",
               method: "POST",
               data: $(this).serialize(),
               success: function(){
+                console.log("posted to cart");
               }
             })
           });
