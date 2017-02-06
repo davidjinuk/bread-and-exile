@@ -6,3 +6,4 @@ public/styles
 public/.DS_Store
 db/.DS_Store
 .DS_Store
+layout.scss
